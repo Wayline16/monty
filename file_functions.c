@@ -126,15 +126,18 @@ void find_func(char *opcode, char *value, int ln, int format)
 	int flag;
 
 	instruction_t func_list[] = {
+		/*Mandatory*/
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
 		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"sub", sub_nodes},
-		{"div", div_nodes},
+
+		/*Advanced*/
+		{"sub", sub},
+		/*{"div", div},*/
 		{"mul", mul_nodes},
 		{"mod", mod_nodes},
 		{"pchar", print_char},

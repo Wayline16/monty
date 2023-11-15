@@ -53,24 +53,26 @@ void find_func(char *, char *, int, int);
 stack_t *create_node(int n);
 void free_nodes(void);
 
-void pall(stack_t **, unsigned int);/*Task 0*/
-void push(stack_t **, unsigned int);/*Task 0*/
-
 void add_to_queue(stack_t **, unsigned int);
 
 void call_function(op_func, char *, char *, int, int);
+
+void pall(stack_t **, unsigned int);/*Task 0*/
+void push(stack_t **, unsigned int);/*Task 0*/
 
 void pint(stack_t **, unsigned int);/*Task 1*/
 
 void pop(stack_t **, unsigned int);/*Task 2*/
 
-void nop(stack_t **, unsigned int);
-void swap_nodes(stack_t **, unsigned int);
+void swap(stack_t **, unsigned int);/*Task 3*/
 
-/*Math operations with nodes*/
-void add_nodes(stack_t **, unsigned int);
-void sub_nodes(stack_t **, unsigned int);
-void div_nodes(stack_t **, unsigned int);
+void add(stack_t **, unsigned int);/*Task 4*/
+
+void nop(stack_t **, unsigned int);/*Task 5*/
+
+void sub(stack_t **, unsigned int);/*Task 6*/
+
+/*void div(stack_t **, unsigned int);Task 7*/
 void mul_nodes(stack_t **, unsigned int);
 void mod_nodes(stack_t **, unsigned int);
 

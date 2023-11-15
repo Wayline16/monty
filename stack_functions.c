@@ -154,7 +154,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * div - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
- */
+ *
 void div(stack_t **stack, unsigned int line_number)
 {
 	int sum;
@@ -169,4 +169,4 @@ void div(stack_t **stack, unsigned int line_number)
 	(*stack)->n = sum;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
-}
+}*/
