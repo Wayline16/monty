@@ -1,102 +1,83 @@
 #include "monty.h"
+stack_t *head = NULL;
 
 /**
- * pall - Print all values on the stack
- * @stack: pointer to head of stack
- * @line_num: file's line number
- * Return: Void
+ * main - entry point
+ * @argc: arguments count
+ * @argv: list of arguments
+ * Return: always 0
  */
 
-void pall(stack_t **stack, unsigned int line_num)
+int main(int argc, char *argv[])
 {
-	stack_t *h = *stack;
-	(void)line_num;
-
-	while (h)
+	if (argc != 2)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
+	open_file(argv[1]);
+	free_nodes();
+	return (0);
 }
 
 /**
- * push - Pushes an element to the stack
- * @stack: pointer to head of stack
- * @line_num: file's line number
- * @n: variable
- * Return: address of new element
+ * create_node - Creates a node.
+ * @n: Number to go inside the node.
+ * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
-
-void push(stack_t **stack, unsigned int line_num, int n)
+stack_t *create_node(int n)
 {
-	stack_t *new, *h = *stack;
+	stack_t *node;
 
-	if (stack == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer", line_num);
-		exit(EXIT_FAILURE);
-	}
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-		exit(EXIT_FAILURE);
-	new->prev = NULL;
-	new->n = n;
-	new->next = *stack;
-	if (*stack)
-		h->prev = new;
-	*stack = new;
+	node = malloc(sizeof(stack_t));
+	if (node == NULL)
+		err(4);
+	node->next = NULL;
+	node->prev = NULL;
+	node->n = n;
+	return (node);
 }
 
 /**
- * pop - Removes the top element of the stack
- * @stack: pointer to head of stack
- * @line_num: file's line number
- * Return: Void
+ * free_nodes - Frees nodes in the stack.
  */
-
-void pop(stack_t **stack, unsigned int line_num)
+void free_nodes(void)
 {
-	stack_t *h = *stack;
+	stack_t *tmp;
 
-	if (!(*stack))
+	if (head == NULL)
+		return;
+
+	while (head != NULL)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-
-
-	if (h)
-	{
-		*stack = (h)->next;
-		free(h);
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
 }
 
+
 /**
- * swap - Swaps the top two elements of the stack
- * @stack: pointer to head of stack
- * @line_num: file's line number
- * Return: Void
+ * add_to_queue - Adds a node to the queue.
+ * @new_node: Pointer to the new node.
+ * @ln: line number of the opcode.
  */
-void swap(stack_t **stack, unsigned int line_num)
+void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
-	stack_t *h = *stack, *ptr;
+	stack_t *tmp;
 
-	if ((*stack) == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_num);
+	if (new_node == NULL || *new_node == NULL)
 		exit(EXIT_FAILURE);
-	}
-
-	if (h && h->next)
+	if (head == NULL)
 	{
-		ptr = h->next;
-		if (ptr->next)
-			ptr->next->prev = h;
-		h->next = ptr->next;
-		ptr->prev = NULL;
-		ptr->next = h;
-		h->prev = ptr;
-		*stack = ptr;
+		head = *new_node;
+		return;
 	}
+	tmp = head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+	tmp->next = *new_node;
+	(*new_node)->prev = tmp;
+
 }
