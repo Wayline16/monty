@@ -58,6 +58,7 @@ void add_to_queue(stack_t **, unsigned int);
 void call_function(op_func, char *, char *, int, int);
 
 void pall(stack_t **, unsigned int);/*Task 0*/
+
 void push(stack_t **, unsigned int);/*Task 0*/
 
 void pint(stack_t **, unsigned int);/*Task 1*/
@@ -74,18 +75,16 @@ void sub(stack_t **, unsigned int);/*Task 6*/
 
 void divide(stack_t **, unsigned int);/*Task 7*/
 
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
+void multiply(stack_t **, unsigned int);/*Task 8*/
 
-/*String operations*/
-void print_char(stack_t **, unsigned int);
-void print_str(stack_t **, unsigned int);
-void rotl(stack_t **, unsigned int);
+void modulus(stack_t **, unsigned int);/*Task 9*/
+
+
 
 /*Error hanlding*/
 void err(int error_code, ...);
 void more_err(int error_code, ...);
-void string_err(int error_code, ...);
-void rotr(stack_t **, unsigned int);
+/*void string_err(int error_code, ...);*/
+/*void rotr(stack_t **, unsigned int);*/
 
 #endif
