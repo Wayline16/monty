@@ -72,7 +72,8 @@ void nop(stack_t **, unsigned int);/*Task 5*/
 
 void sub(stack_t **, unsigned int);/*Task 6*/
 
-/*void div(stack_t **, unsigned int);Task 7*/
+void divide(stack_t **, unsigned int);/*Task 7*/
+
 void mul_nodes(stack_t **, unsigned int);
 void mod_nodes(stack_t **, unsigned int);
 

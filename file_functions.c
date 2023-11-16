@@ -137,7 +137,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 
 		/*Advanced*/
 		{"sub", sub},
-		/*{"div", div},*/
+		{"div", divide},
 		{"mul", mul_nodes},
 		{"mod", mod_nodes},
 		{"pchar", print_char},
