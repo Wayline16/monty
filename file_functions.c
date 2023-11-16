@@ -50,7 +50,7 @@ void open_file(char *file_name)
 
 int parse_line(char *buffer, int line_number, int format)
 {
-	const char *delim = "\n ";
+	const char *delim = "\n  $";
 	char *opcode, *value;
 
 	if (buffer == NULL)
