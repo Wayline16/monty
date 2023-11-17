@@ -54,7 +54,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL)
-		more_err(7, line_number);
+		err(7, line_number);
 
 	tmp = *stack;
 	*stack = tmp->next;
@@ -71,7 +71,7 @@ void pop(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
-		more_err(6, line_number);
+		err(6, line_number);
 	printf("%d\n", (*stack)->n);
 }
 
@@ -97,7 +97,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "swap");
+		err(8, line_number, "swap");
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	if (tmp->next != NULL)
@@ -118,7 +118,7 @@ void add(stack_t **stack, unsigned int line_number)
 	int total;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "add");
+		err(8, line_number, "add");
 
 	(*stack) = (*stack)->next;
 	total = (*stack)->n + (*stack)->prev->n;
@@ -139,7 +139,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_err(8, line_number, "sub");
+		err(8, line_number, "sub");
 
 
 	(*stack) = (*stack)->next;
@@ -160,10 +160,10 @@ void divide(stack_t **stack, unsigned int line_number)
 	int total;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "div");
+		err(8, line_number, "div");
 
 	if ((*stack)->n == 0)
-		more_err(9, line_number);
+		err(9, line_number);
 	(*stack) = (*stack)->next;
 	total = (*stack)->n / (*stack)->prev->n;
 	(*stack)->n = total;
@@ -182,7 +182,7 @@ void multiply(stack_t **stack, unsigned int line_number)
 	int total;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "mul");
+		err(8, line_number, "mul");
 
 	(*stack) = (*stack)->next;
 	total = (*stack)->n * (*stack)->prev->n;
@@ -203,11 +203,11 @@ void modulus(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_err(8, line_number, "mod");
+		err(8, line_number, "mod");
 
 
 	if ((*stack)->n == 0)
-		more_err(9, line_number);
+		err(9, line_number);
 	(*stack) = (*stack)->next;
 	total = (*stack)->n % (*stack)->prev->n;
 	(*stack)->n = total;

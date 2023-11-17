@@ -11,6 +11,7 @@
  * (6) => When the stack it empty for pint.
  * (7) => When the stack it empty for pop.
  * (8) => When stack is too short for operation.
+ * (9) => Division by zero.
  */
 void err(int error_code, ...)
 {
@@ -39,30 +40,6 @@ void err(int error_code, ...)
 		case 5:
 			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
 			break;
-		default:
-			break;
-	}
-	free_nodes();
-	exit(EXIT_FAILURE);
-}
-
-/**
- * more_err - handles errors.
- * @error_code: The error codes are the following:
- * (6) => When the stack it empty for pint.
- * (7) => When the stack it empty for pop.
- * (8) => When stack is too short for operation.
- * (9) => Division by zero.
- */
-void more_err(int error_code, ...)
-{
-	va_list ag;
-	char *op;
-	int l_num;
-
-	va_start(ag, error_code);
-	switch (error_code)
-	{
 		case 6:
 			fprintf(stderr, "L%d: can't pint, stack empty\n",
 				va_arg(ag, int));
@@ -86,4 +63,3 @@ void more_err(int error_code, ...)
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
-

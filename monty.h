@@ -47,7 +47,7 @@ void open_file(char *file_name);
 int parse_line(char *buffer, int line_number, int format);
 void read_file(FILE *);
 int len_chars(FILE *);
-void find_func(char *, char *, int, int);
+void find_function(char *, char *, int, int);
 
 /*Stack operations*/
 stack_t *create_node(int n);
@@ -83,7 +83,7 @@ void modulus(stack_t **, unsigned int);/*Task 9*/
 
 /*Error hanlding*/
 void err(int error_code, ...);
-void more_err(int error_code, ...);
+/*void more_err(int error_code, ...);*/
 /*void string_err(int error_code, ...);*/
 /*void rotr(stack_t **, unsigned int);*/
 

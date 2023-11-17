@@ -66,7 +66,7 @@ int parse_line(char *buffer, int line_number, int format)
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
-	find_func(opcode, value, line_number, format);
+	find_function(opcode, value, line_number, format);
 	return (format);
 }
 
@@ -112,7 +112,7 @@ void call_function(op_func func, char *op, char *val, int ln, int format)
 }
 
 /**
- * find_func - find the appropriate function for the opcode
+ * find_function - find the appropriate function for the opcode
  * @opcode: opcode
  * @value: argument of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
@@ -120,12 +120,12 @@ void call_function(op_func func, char *op, char *val, int ln, int format)
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void find_func(char *opcode, char *value, int ln, int format)
+void find_function(char *opcode, char *value, int ln, int format)
 {
 	int i;
 	int flag;
 
-	instruction_t func_list[] = {
+	instruction_t function_list[] = {
 		/*Mandatory*/
 		{"push", push},
 		{"pall", pall},
@@ -147,11 +147,11 @@ void find_func(char *opcode, char *value, int ln, int format)
 	if (opcode[0] == '#')
 		return;
 
-	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
+	for (flag = 1, i = 0; function_list[i].opcode != NULL; i++)
 	{
-		if (strcmp(opcode, func_list[i].opcode) == 0)
+		if (strcmp(opcode, function_list[i].opcode) == 0)
 		{
-			call_function(func_list[i].f, opcode, value, ln, format);
+			call_function(function_list[i].f, opcode, value, ln, format);
 			flag = 0;
 		}
 	}
